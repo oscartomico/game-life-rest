@@ -1,6 +1,6 @@
 package com.mycompany.juegovidarest.dto;
 
-public class Tablero {	
+public class TableroRequest {	
 	private int[][] tablero;
 
 	public int[][] getTablero() {
