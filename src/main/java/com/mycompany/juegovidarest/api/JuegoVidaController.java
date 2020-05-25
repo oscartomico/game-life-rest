@@ -1,5 +1,7 @@
 package com.mycompany.juegovidarest.api;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,8 +24,8 @@ public class JuegoVidaController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/itera", consumes = "application/json")
-	public ResponseEntity getIteracion(@RequestBody TableroRequest tablero, @RequestParam("iteraciones") int iteraciones) {
-		String tableroString = service.itera(tablero.getTablero(), iteraciones);
+	public ResponseEntity getIteracion(@Valid @RequestBody TableroRequest tablero) {
+		String tableroString = service.itera(tablero.getTablero(), tablero.getIteraciones());
 		TableroResponse response = new TableroResponse();
 		response.setTablero(tableroString);
 		return ResponseEntity.ok(response);
